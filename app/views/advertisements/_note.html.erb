@@ -1,0 +1,10 @@
+<div class="note">
+    <%= f.label :content, "Nota" %><br />
+    <%= f.text_field :content %>
+    <% unless f.object.new_record? %>
+        <%= f.check_box '_delete' %>
+        <%= f.label '_delete', 'Remove' %>
+    <% else -%>
+        <%= link_to 'Remove', ".note", :class => "remove nested_object" %>
+    <% end %>
+</div>

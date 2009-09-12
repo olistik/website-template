@@ -1,0 +1,29 @@
+<div class="crud_form">
+    <%= link_to 'Lista', collection_path %>
+    <% for field in fields do -%>
+        <p>
+            <b><%= field[:label] %></b>
+            <% result_value = object.value_for(field[:name]) %>
+            <% if result_value.is_a? Array -%>
+                <% values = result_value -%>
+                <ul>
+                    <% for value in values do -%>
+                        <li>
+                            <%= render :partial => 'shared/resources/object_value', :locals => {:value => value} %>
+                        </li>
+                    <% end -%>
+                </ul>
+            <% else -%>
+                <%= render :partial => 'shared/resources/object_value', :locals => {:value => result_value} %>
+            <% end -%>
+        </p>
+    <% end -%>
+    <% if defined? complex_fields -%>
+        <% for complex_field in complex_fields do -%>
+            <%= render_cell object.class.to_s.underscore.to_sym, complex_field.to_sym, :slug => object -%>
+        <% end -%>
+    <% end -%>
+    <%= link_to 'Modifica', edit_object_path(object) %> |
+    <%= link_to 'Lista', collection_path %>
+</div>
+

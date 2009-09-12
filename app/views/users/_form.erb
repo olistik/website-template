@@ -1,0 +1,18 @@
+<%= form.label :login %><br />
+<%= form.text_field :login %><br />
+<br />
+<%= form.label :email %><br />
+<%= form.text_field :email %><br />
+<br />
+<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
+<%= form.password_field :password %><br />
+<br />
+<%= form.label :password_confirmation %><br />
+<%= form.password_field :password_confirmation %><br />
+<br />
+<%= label_tag :roles %><br />
+<% available_roles = Role.all.collect {|role| [role.name, role.id]} -%>
+<% owned_roles = form.object.roles.collect {|role| role.id} -%>
+<% roles_options = options_for_select available_roles, owned_roles %>
+<%= select_tag :roles_ids, roles_options, :multiple => true -%>
+

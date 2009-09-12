@@ -1,0 +1,16 @@
+#content {
+    padding: 10px;
+    margin: 0 auto;
+    border: 1px solid #bababa;
+    border-top: none;
+}
+
+table.index {
+    text-align: center;
+    margin: 0 auto;
+    border: 2px solid gray;
+}
+table.index td {
+    border: 2px solid #bababa;
+    padding: 2px;
+}

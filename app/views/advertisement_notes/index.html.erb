@@ -1,0 +1,26 @@
+<div class="crud_form">
+<h1>Lista <i>Note Inserzioni</i></h1>
+
+<%= link_to 'Nuova <i>Nota Inserzione</i>', new_advertisement_note_path %>
+<table>
+  <tr>
+    <th>Nota</th>
+    <th>Inserzione</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @advertisement_notes.each do |advertisement_note| %>
+  <tr>
+    <td><%=h advertisement_note.content %></td>
+    <td><%=link_to(h(advertisement_note.advertisement.name), advertisement_note.advertisement) %></td>
+    <td><%= link_to 'Mostra', advertisement_note %></td>
+    <td><%= link_to 'Modifica', edit_advertisement_note_path(advertisement_note) %></td>
+    <td><%= link_to 'Cancella', advertisement_note, :confirm => 'Sei sicuro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuova <i>Nota Inserzione</i>', new_advertisement_note_path %>
+</div>

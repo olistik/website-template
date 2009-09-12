@@ -1,0 +1,68 @@
+<div class="crud_form">
+<p>
+  <b>Name:</b>
+  <%=h @customer.name %>
+</p>
+
+<p>
+  <b>Company name:</b>
+  <%=h @customer.company_name %>
+</p>
+
+<p>
+  <b>Vat:</b>
+  <%=h @customer.vat %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= link_to h(@customer.city.name), @customer.city %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @customer.address %>
+</p>
+
+<p>
+  <b>Civic number:</b>
+  <%=h @customer.civic_number %>
+</p>
+
+<p>
+  <b>Telephone:</b>
+  <%=h @customer.telephone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @customer.email %>
+</p>
+
+<p>
+  <b>Referrer:</b>
+  <%=h @customer.referrer %>
+</p>
+
+<ul id="photos">
+    <b>Foto:</b>
+    <% for photo in @customer.photos do -%>
+        <li class="photo">
+            <%= link_to h(photo.name), photo %>
+        </li>
+    <% end -%>
+</ul>
+
+<ul id="advertisements">
+    <b>Inserzioni:</b>
+    <% for advertisement in @customer.advertisements do -%>
+        <li class="advertisement">
+            <%= link_to h(advertisement.name), advertisement %>
+        </li>
+    <% end -%>
+</ul>
+
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
+</div>

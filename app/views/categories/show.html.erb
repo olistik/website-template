@@ -1,0 +1,32 @@
+<div class="crud_form">
+<p>
+    <b>Name:</b>
+    <%=h @category.name %>
+</p>
+
+<p>
+    <b>Macro category:</b>
+    <%= link_to(h(@category.macro_category.name), @category.macro_category)  %>
+</p>
+
+<ul id="services">
+    <b>Servizi associati:</b>
+    <% for service in @category.services do -%>
+        <li class="service">
+            <%= link_to h(service.name), service %>
+        </li>
+    <% end -%>
+</ul>
+
+<ul id="collections">
+    <b>Collezioni:</b>
+    <% for collection in @category.collections do -%>
+        <li class="collection">
+            <%= link_to h(collection.name), collection %>
+        </li>
+    <% end -%>
+</ul>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
+</div>

@@ -1,0 +1,2 @@
+module CmsActionsHelper
+end

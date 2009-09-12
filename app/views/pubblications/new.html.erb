@@ -1,0 +1,25 @@
+<div class="crud_form">
+<h1>New pubblication</h1>
+
+<% form_for(@pubblication) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :advertisement_id %><br />
+    <%= f.select :advertisement_id, @advertisements %>
+  </p>
+  <p>
+    <%= f.label :photo_id %><br />
+    <%= f.select :photo_id, @photos %>
+  </p>
+  <p>
+    <%= f.label :promote %><br />
+    <%= f.check_box :promote %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', pubblications_path %>
+</div>

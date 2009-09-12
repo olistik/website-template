@@ -1,0 +1,6 @@
+<% if value.kind_of? ActiveRecord::Base %>
+    <%= link_to value.to_s, value %>
+<% else -%>
+    <%= value %>
+<% end -%>
+

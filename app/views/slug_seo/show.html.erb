@@ -1,0 +1,30 @@
+<div class="crud_form">
+<p>
+  <b>Slug:</b>
+  <%=h @slug_seo.slug_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @slug_seo.title %>
+</p>
+
+<p>
+  <b>Keywords:</b>
+  <%=h @slug_seo.keywords %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @slug_seo.description %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%=h @slug_seo.tags %>
+</p>
+
+
+<%= link_to 'Edit', edit_slug_seo_path(@slug_seo) %> |
+<%= link_to 'Back', slug_seo_path %>
+</div>

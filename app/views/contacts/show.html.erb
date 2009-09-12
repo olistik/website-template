@@ -1,0 +1,27 @@
+<div class="crud_form">
+<p>
+  <b>Name:</b>
+  <%=h @contact.name %>
+</p>
+
+<ul id="advertisements">
+    <b>Inserzioni:</b>
+    <% for advertisement in @contact.advertisements do -%>
+        <li class="advertisement">
+            <%= link_to h(advertisement.name), advertisement %>
+        </li>
+    <% end -%>
+</ul>
+
+<ul id="contact_details">
+    <b>Dettagli:</b>
+    <% for contact_detail in @contact.details do -%>
+        <li class="contact_detail">
+            <%= link_to h(contact_detail.content), contact_detail %>
+        </li>
+    <% end -%>
+</ul>
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>
+</div>

@@ -1,0 +1,2 @@
+module PubblicationsHelper
+end

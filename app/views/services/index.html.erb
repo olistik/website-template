@@ -1,0 +1,28 @@
+<div class="crud_form">
+<h1>Lista <i>Servizi</i></h1>
+
+<%= link_to 'Nuovo <i>Servizio</i>', new_service_path %>
+<table border="1">
+  <tr>
+    <th>Nome</th>
+    <th># Categorie</th>
+    <th># Inserzioni</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @services.each do |service| %>
+  <tr>
+    <td><%=h service.name %></td>
+    <td><%= service.categories.size %></td>
+    <td><%= service.advertisements.size %></td>
+    <td><%= link_to 'Mostra', service %></td>
+    <td><%= link_to 'Modifica', edit_service_path(service) %></td>
+    <td><%= link_to 'Elimina', service, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuovo <i>Servizio</i>', new_service_path %>
+</div>

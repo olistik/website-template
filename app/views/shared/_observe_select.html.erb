@@ -1,0 +1,14 @@
+<% content_for :js_templates do -%>
+    jQuery('<%= source.to_s %>').change(function() {
+        var value = jQuery(this).val();
+        if (value == "") {
+            jQuery('<%= update.to_s %>').empty();
+            return;
+        }
+        var url = '<%= url %>';
+        jQuery.get(url, {<%= param_name.to_s %>: value}, function(data) {
+            jQuery('<%= update.to_s %>').html(data);
+        }, "html");
+    });
+<% end -%>
+

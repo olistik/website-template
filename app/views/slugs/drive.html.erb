@@ -1,0 +1,15 @@
+<% content_for(:keywords) do %>
+    <%= @slug.seo.keywords %>
+<% end %>
+
+<% content_for(:description) do %>
+    <%= @slug.seo.description %>
+<% end %>
+
+<% content_for(:title) do %>
+    <%= @slug.seo.title %>
+<% end %>
+
+QUA VA IL CONTENUTO DEL PERMALINK IL CUI URL E': <%= @slug.url %>
+
+<%= render_cell :slug, :compose, :slug => @slug %>

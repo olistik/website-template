@@ -1,0 +1,10 @@
+<div class="crud_form">
+<h1>Editing slug</h1>
+
+<% form_for(@slug) do |f| %>
+    <%= render :partial => 'form', :object => f %>
+<% end %>
+
+<%= link_to 'Show', @slug %> |
+<%= link_to 'Back', slugs_path %>
+</div>

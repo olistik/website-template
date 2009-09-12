@@ -1,0 +1,18 @@
+<div class="crud_form">
+<p>
+    <b>Name:</b>
+    <%=h @advertisement_level.name %>
+</p>
+
+<b>Inserzioni:</b>
+<ul id="advertisements">
+    <% for advertisement in @advertisement_level.advertisements do -%>
+        <li class="advertisement">
+            <%= link_to h(advertisement.name), advertisement %>
+        </li>
+    <% end -%>
+</ul>
+
+<%= link_to 'Edit', edit_advertisement_level_path(@advertisement_level) %> |
+<%= link_to 'Back', advertisement_levels_path %>
+</div>

@@ -1,0 +1,32 @@
+<div class="crud_form">
+<h1>Listing slug_seo</h1>
+
+<%= link_to 'New slug_seo', new_slug_seo_path %>
+<table>
+  <tr>
+    <th>Slug</th>
+    <th>Title</th>
+    <th>Keywords</th>
+    <th>Description</th>
+    <th>Tags</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @slug_seo.each do |slug_seo| %>
+  <tr>
+    <td><%=h slug_seo.slug_id %></td>
+    <td><%=h slug_seo.title %></td>
+    <td><%=h slug_seo.keywords %></td>
+    <td><%=h slug_seo.description %></td>
+    <td><%=h slug_seo.tags %></td>
+    <td><%= link_to 'Show', slug_seo %></td>
+    <td><%= link_to 'Edit', edit_slug_seo_path(slug_seo) %></td>
+    <td><%= link_to 'Destroy', slug_seo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New slug_seo', new_slug_seo_path %>
+</div>

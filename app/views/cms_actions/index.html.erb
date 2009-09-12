@@ -1,0 +1,30 @@
+<div class="crud_form">
+<h1>Listing cms_actions</h1>
+
+<%= link_to 'Nuova <i>Azione</i>', new_cms_action_path %><br />
+<%= link_to 'Lista dei <i>Controllori</i>', cms_controllers_path %>
+<table border="1">
+  <tr>
+    <th>Id</th>
+    <th>Cms controller</th>
+    <th>Name</th>
+    <th>Label</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @cms_actions.each do |cms_action| %>
+  <tr>
+    <td><%=cms_action.id %></td>
+    <td><%=h cms_action.cms_controller.name %></td>
+    <td><%=h cms_action.name %></td>
+    <td><%=h cms_action.label %></td>
+    <td><%= link_to 'Show', cms_action %></td>
+    <td><%= link_to 'Edit', edit_cms_action_path(cms_action) %></td>
+    <td><%= link_to 'Destroy', cms_action, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'Nuova <i>Azione</i>', new_cms_action_path %><br />
+<%= link_to 'Lista dei <i>Controllori</i>', cms_controllers_path %>
+</div>

@@ -1,0 +1,21 @@
+<div class="crud_form">
+<h1>New region</h1>
+
+<% form_for(@region) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :nation_id, 'Nazione' %><br />
+    <%= f.select :nation_id, @nations %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', regions_path %>
+</div>

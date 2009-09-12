@@ -1,0 +1,24 @@
+<div class="crud_form">
+<h1>Lista <i>Ruoli</i></h1>
+
+<%= link_to 'Nuovo <i>Ruolo</i>', new_role_path %>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @roles.each do |role| %>
+  <tr>
+    <td><%=h role.name %></td>
+    <td><%= link_to 'Mostra', role %></td>
+    <td><%= link_to 'Modifica', edit_role_path(role) %></td>
+    <td><%= link_to 'Elimina', role, :confirm => 'Sei sicuro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuovo <i>Ruolo</i>', new_role_path %>
+</div>

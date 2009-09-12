@@ -1,0 +1,28 @@
+<% if form.object.new_record? -%>
+    <% for path_data in @paths do -%>
+        <% options = {:path_data => path_data, :composition_rule => form.object} -%>
+        <%= render_cell :slug, :draw_path, options %>
+    <% end -%>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('.path input[name="cell_layout_id"]')
+            jQuery('.path input[type="radio"]').click(function() {
+                var cell_layout_id = jQuery(this).parents('.path').children('input[type=hidden]').val();
+                jQuery('#composition_rule_cell_layout_id').val(cell_layout_id);
+            });
+            jQuery('#composition_rule_cell_layout_id').change(function() {
+                jQuery('.path input[type="radio"]').attr("checked", false);
+            });
+        });
+    </script>
+    <%= form.label :cell_layout_id, 'Layout di Cella' %><br />
+    <%= form.select :cell_layout_id, @cell_layouts %><br />
+<% else -%>
+    <p>
+        To change a rule position/cell layout:<br />
+        just delete it and recreate a new one in the desired position.
+    </p>
+<% end -%>
+<%= form.label :cell_action_id, 'Azione di Cella' %><br />
+<%= form.select :cell_action_id, @cell_actions %><br />
+

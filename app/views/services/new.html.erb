@@ -1,0 +1,17 @@
+<div class="crud_form">
+<h1>Nuovo <i>Servizio</i></h1>
+
+<% form_for(@service) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, 'Nome' %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Crea' %>
+  </p>
+<% end %>
+
+<%= link_to 'Lista <i>Servizi</i>', services_path %>
+</div>

@@ -1,0 +1,17 @@
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('<%= @source.to_s %>').change(function() {
+            var value = jQuery(this).val();
+            var update_section = jQuery('<%= @update.to_s %>');
+            if (value == "") {
+                update_section.empty();
+                return;
+            }
+            var url = '<%= @url %>';
+            jQuery.get(url, {<%= @param_name.to_s %>: value}, function(data) {
+                update_section.html(data);
+            }, "html");
+        });
+    });
+</script>
+

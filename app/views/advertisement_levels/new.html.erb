@@ -1,0 +1,18 @@
+<div class="crud_form">
+<h1>New advertisement_level</h1>
+
+<% form_for(@advertisement_level) do |f| %>
+    <%= f.error_messages %>
+
+    <p>
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+    </p>
+
+    <p>
+        <%= f.submit 'Create' %>
+    </p>
+<% end %>
+
+<%= link_to 'Back', advertisement_levels_path %>
+</div>

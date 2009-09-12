@@ -1,0 +1,18 @@
+<table class="slug_data">
+    <caption>Parametri</caption>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Valore</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for couple in @slug.param_data do -%>
+            <tr>
+                <td><%= couple[:name] %></td>
+                <td><%= couple[:value] %></td>
+            </tr>
+        <% end -%>
+    </tbody>
+</table>
+

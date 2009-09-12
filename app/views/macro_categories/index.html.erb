@@ -1,0 +1,24 @@
+<div class="crud_form">
+<h1>Listing macro_categories</h1>
+
+<%= link_to 'New macro_category', new_macro_category_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @macro_categories.each do |macro_category| %>
+  <tr>
+    <td><%=h macro_category.name %></td>
+    <td><%= link_to 'Show', macro_category %></td>
+    <td><%= link_to 'Edit', edit_macro_category_path(macro_category) %></td>
+    <td><%= link_to 'Destroy', macro_category, :confirm => 'Sicuro? Cancellerai anche tutte le sotto categorie!', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New macro_category', new_macro_category_path %>
+</div>

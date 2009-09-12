@@ -1,0 +1,16 @@
+<%= label_tag "cell_action[cell_container_id]", "Contenitore di Cella" %>
+<% default_value = @cell_container.nil? ? "" : @cell_container.id -%>
+<% select_options = options_for_select([""] + @cell_containers, default_value) -%>
+<%= select_tag "cell_action[cell_container_id]", select_options %>
+<%= render_cell :form, :observe_select, {
+    :source => "#cell_action_cell_container_id",
+    :url => update_cell_actions_path(),
+    :param_name => :cell_container_id,
+    :update => "#response_div"
+} %>
+<div id="response_div">
+    <% if @cell_action -%>
+        <% select_options = options_for_select([""] + @cell_actions, @cell_action.name) -%>
+        <%= select_tag "cell_action[name]", select_options %>
+    <% end -%>
+</div>

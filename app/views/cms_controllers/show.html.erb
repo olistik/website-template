@@ -1,0 +1,15 @@
+<p>
+    <b>Name:</b>
+    <%=h @cms_controller.name %>
+    <ul>Associated actions:
+        <% for cms_action in @cms_controller.cms_actions do -%>
+            <li>
+                <%= link_to cms_action.name, cms_action_path(cms_action) %>
+            </li>
+        <% end -%>
+    </ul>
+</p>
+
+
+<%= link_to 'Edit', edit_cms_controller_path(@cms_controller) %> |
+<%= link_to 'Back', cms_controllers_path %>

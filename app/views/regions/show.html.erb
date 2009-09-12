@@ -1,0 +1,22 @@
+<div class="crud_form">
+<p>
+  <b>Name:</b>
+  <%=h @region.name %>
+</p>
+
+<p>
+  <b>Nation:</b>
+  <%= link_to h(@region.nation.name), @region.nation %>
+</p>
+
+<ul id="provinces">
+    <% for province in @region.provinces do -%>
+        <li class="province">
+            <%= link_to h(province.name), province %>
+        </li>
+    <% end -%>
+</ul>
+
+<%= link_to 'Edit', edit_region_path(@region) %> |
+<%= link_to 'Back', regions_path %>
+</div>

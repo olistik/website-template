@@ -1,0 +1,18 @@
+<%= render :partial => 'shared/resources/index', :locals => {
+    :title => 'Slugs',
+    :fields => [
+        {:name => 'url', :label => "Url"},
+        {:name => 'data', :label => "Data"},
+        {:name => 'title', :label => "Title"},
+        {:name => 'keywords', :label => "Keywords"},
+        {:name => 'description', :label => "Description"},
+        {:name => 'tags', :label => "Tags"},
+        {:name => 'seo_object_id', :label => "Seo Object id"},
+        {:name => 'seo_object_type', :label => "Seo Object Type"},
+        {:name => 'seo_pattern', :label => "Seo Pattern"}
+    ], :collection => collection,
+    :extra_actions => [
+        {:action => :apply_pattern, :label => "Apply Pattern", :method => :post}
+    ]
+} %>
+

@@ -1,0 +1,29 @@
+<div class="crud_form">
+<h1>New category</h1>
+
+<% form_for(@category) do |f| %>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :macro_category_id, 'Macro categoria' %><br />
+        <%= f.select :macro_category_id, @macro_categories %>
+    </p>
+    <ul id="services">
+        <h4>Servizi:</h4>
+        <% for service in @services do -%>
+            <li class="service">
+                <%= check_box_tag "category[service_ids][]", service.id -%>
+                <%= link_to(h(service.name), service) %>
+            </li>
+        <% end -%>
+    </ul>
+    <p>
+        <%= f.submit 'Create' %>
+    </p>
+<% end %>
+
+<%= link_to 'Back', categories_path %>
+</div>

@@ -1,0 +1,25 @@
+<div class="crud_form">
+<h1>Editing cms_action</h1>
+
+<% form_for(@cms_action) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.select :name, @cms_action.cms_controller.cms_actions_left() %><br />
+  </p>
+  <p>
+    <%= f.label :label, "Etichetta (vuoto per lasciarlo identico al nome dell'azione)" %><br />
+    <%= f.text_field :label %>
+  </p>
+  <p>
+    <%= f.label :cms_controller_name %><br />
+    <%= text_field_tag :cms_controller_name, @cms_action.cms_controller.name, :disabled => true %>
+  </p>
+  <p>
+    <%= hidden_field_tag :direction, :next %>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', cms_actions_path %>
+</div>

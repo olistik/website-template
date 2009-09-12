@@ -1,0 +1,5 @@
+log/mongrel.pid
+log/*
+tmp/**/*
+public/system/**/*
+.htaccess

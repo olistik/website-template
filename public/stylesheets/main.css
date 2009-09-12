@@ -1,0 +1,16 @@
+html, body, * {
+    margin: 0px;
+    padding: 0px;
+}
+
+.notice {
+    color: green;
+    text-align: center;
+    background-color: #ff9;
+    border-bottom: 1px solid #bababa;
+    border-top: 1px solid #bababa;
+}
+
+.hide {
+    display: none;
+}

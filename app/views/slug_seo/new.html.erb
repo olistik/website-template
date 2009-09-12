@@ -1,0 +1,33 @@
+<div class="crud_form">
+<h1>New slug_seo</h1>
+
+<% form_for(@slug_seo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :slug_id %><br />
+    <%= f.text_field :slug_id %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :tags %><br />
+    <%= f.text_area :tags %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', slug_seo_path %>
+</div>

@@ -1,0 +1,42 @@
+<div class="crud_form">
+<p>
+  <b>Name:</b>
+  <%=h @photo.name %>
+</p>
+<p>
+    <b>Immagine:</b>
+    <%= image_tag @photo.image.url(:thumb) %>
+</p>
+<p>
+  <b>Url:</b>
+  <%=h @photo.image.url %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%=h @photo.rating %>
+</p>
+
+<p>
+  <b>Viewed:</b>
+  <%=h @photo.viewed %>
+</p>
+
+<p>
+  <b>Customer:</b>
+    <%= @photo.customer.nil? ? "N/D" : link_to(h(@photo.customer.name), @photo.customer) %>
+</p>
+
+<ul id="advertisements">
+    <b>Inserzioni:</b>
+    <% for advertisement in @photo.advertisements do -%>
+        <li class="advertisement">
+            <%= link_to h(advertisement.name), advertisement  %>
+        </li>
+    <% end -%>
+</ul>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>
+</div>

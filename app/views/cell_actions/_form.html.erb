@@ -1,0 +1,11 @@
+<%= form.label :label, 'Etichetta' %><br />
+<%= form.text_field :label %><br />
+<%= form.label :name, 'Nome' %><br />
+<% if form.object.new_record? -%>
+    <% options = {} -%>
+<% else -%>
+    <% options = {:cell_action => @object} -%>
+<% end -%>
+<%= render_cell(:cell_management, :selection, options) %>
+
+

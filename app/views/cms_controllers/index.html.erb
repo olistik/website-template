@@ -1,0 +1,26 @@
+<h1>Listing cms_controllers</h1>
+
+<%= link_to 'Nuovo <i>Controllore</i>', new_cms_controller_path %><br />
+<%= link_to 'Lista delle <i>Azioni</i>', cms_actions_path %>
+<table>
+  <tr>
+    <th>Name</th>
+      <th colspan="2">Azioni</th>
+</tr>
+
+<% @cms_controllers.each do |cms_controller| %>
+  <tr>
+    <td><%=h cms_controller.name %></td>
+    <td><%= link_to 'Show', cms_controller %></td>
+    <td><%= link_to 'Destroy', cms_controller, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if @number_of_cms_controllers_left > 0 -%>
+    <% link_label = 'Aggiungi tutti i <b>' + @number_of_cms_controllers_left.to_s + '</b> <i>Controllori</i> rimanenti' -%>
+    <%= link_to link_label, create_remaining_new_cms_controller_path() %> <br />
+<% end -%>
+<%= link_to 'Nuovo <i>Controllore</i>', new_cms_controller_path %><br />
+<%= link_to 'Lista delle <i>Azioni</i>', cms_actions_path %>

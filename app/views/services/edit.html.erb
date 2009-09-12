@@ -1,0 +1,47 @@
+<div class="crud_form">
+<h1>Modifica <i>Servizio</i></h1>
+
+<% form_for(@service) do |f| %>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :name, 'Nome' %><br />
+        <%= f.text_field :name %>
+    </p>
+    <h4>Categorie associate:</h4>
+    <table border="1" id="categories">
+        <thead>
+            <tr>
+                <th>Macro</th>
+                <th>Micro</th>
+            </tr>
+        </thead>
+        <% for category in @categories do -%>
+            <tr class="category">
+                <td>
+                    <%= link_to h(category.macro_category.name), category.macro_category %>
+                </td>
+                <td>
+                    <%= link_to h(category.name), category %>
+                </td>
+                <td>
+                    <%= check_box_tag 'service[category_ids][]', category.id, @service.categories.include?(category) %>
+                </td>
+            </tr>
+        <% end -%>
+    </table>
+    <ul id="advertisements">
+        <h4>Inserzioni associate:</h4>
+        <% for advertisement in @advertisements do -%>
+            <li class="advertisement">
+                <%= check_box_tag 'service[advertisement_ids][]', advertisement.id, @service.advertisements.include?(advertisement) %>
+                <%= link_to h(advertisement.name), advertisement %>
+            </li>
+        <% end -%>
+    </ul>
+    <p>
+        <%= f.submit 'Aggiorna' %>
+    </p>
+<% end %>
+
+<%= link_to 'Lista <i>Servizi</i>', services_path %>
+</div>

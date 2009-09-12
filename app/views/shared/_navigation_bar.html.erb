@@ -1,0 +1,13 @@
+<div class="navigation">
+    <% if not current_user and User.all.size == 0 -%>
+        <%= link_to "New User", new_user_path %>
+        <%= link_to "Roles", roles_path %>
+    <% end -%>
+    <% if current_user %>
+        <%= render :partial => 'shared/menu' %>
+        <%= link_to "<h3>Log out</h3>", logout_path %>
+    <% else %>
+        <%= link_to "<h3>Log in</h3>", login_path %>
+    <% end %>
+</div>
+

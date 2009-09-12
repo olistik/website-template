@@ -1,0 +1,48 @@
+<% content_for :js_libraries do -%>
+    <%= javascript_include_tag 'geo' %>
+<% end -%>
+
+<%
+unless form_builder.object.new_record?
+    nations_options = options_for_select([""] + nations, form_builder.object.city.province.region.nation.id)
+    regions_options = options_for_select([""] + regions, form_builder.object.city.province.region.id)
+    provinces_options = options_for_select([""] + provinces, form_builder.object.city.province.id)
+    cities_options = [""] + cities
+else
+    nations_options = options_for_select([""] + nations)
+    regions_options = ""
+    provinces_options = ""
+    cities_options = ""
+end
+-%>
+<p>
+    <%= label_tag :nation_id, "Nazione" %><br />
+    <%= select_tag :nation_id, nations_options %>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#nation_id').data('action_url', "<%= get_all_regions_by_nation_id_path() %>");
+        });
+    </script>
+</p>
+<p>
+    <%= label_tag :region_id, "Regione" %><br />
+    <%= select_tag :region_id, regions_options %>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#region_id').data('action_url', "<%= get_all_provinces_by_region_id_path() %>");
+        });
+    </script>
+</p>
+<p>
+    <%= label_tag :province_id, "Provincia" %><br />
+    <%= select_tag :province_id, provinces_options %>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#province_id').data('action_url', "<%= get_all_cities_by_province_id_path() %>");
+        });
+    </script>
+</p>
+<p>
+    <%= form_builder.label :city_id, "Città" %><br />
+    <%= form_builder.select :city_id, cities_options, {}, :class => "city_id" %>
+</p>

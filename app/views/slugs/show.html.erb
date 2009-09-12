@@ -1,0 +1,16 @@
+<%= render :partial => 'shared/resources/show', :locals => {
+    :title => 'Slug',
+    :fields => [
+        {:name => 'url', :label => "Url"},
+        {:name => 'title', :label => "Title"},
+        {:name => 'keywords', :label => "Keywords"},
+        {:name => 'description', :label => "Description"},
+        {:name => 'tags', :label => "Tags"},
+        # TODO replace the following line with "seo_object"
+        {:name => 'seo_object', :label => "Seo Object"},
+        {:name => 'seo_object_type', :label => "Seo Object Type"},
+        {:name => 'seo_pattern', :label => "Seo Pattern"}
+    ], :complex_fields => [:param_data],
+    :object => object
+} %>
+

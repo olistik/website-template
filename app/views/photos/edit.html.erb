@@ -1,0 +1,42 @@
+<div class="crud_form">
+<h1>Editing photo</h1>
+
+<% form_for(@photo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+<p>
+    <b>Immagine corrente:</b>
+    <%= image_tag @photo.image.url(:thumb) %>
+</p>
+  <p>
+    Current url: <%= @photo.image.url %>
+  </p>
+  <p>
+      <%= f.label :image %><br />
+      <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.label :customer_id %><br />
+    <%= f.select :customer_id, @customers %>
+  </p>
+<ul id="advertisements">
+    <b>Inserzioni:</b>
+    <% for advertisement in @advertisements do -%>
+        <li class="advertisement">
+            <%= check_box_tag 'photo[advertisement_ids][]', advertisement.id, @photo.advertisements.include?(advertisement) %>
+            <%= link_to h(advertisement.name), advertisement  %>
+        </li>
+    <% end -%>
+</ul>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @photo %> |
+<%= link_to 'Back', photos_path %>
+</div>

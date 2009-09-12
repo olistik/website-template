@@ -1,0 +1,18 @@
+<div class="crud_form">
+<p>
+    <b>Name:</b>
+    <%=h @macro_category.name %>
+    <h5>Categorie figlie:</h5>
+    <ul id="categories">
+        <% for category in @macro_category.categories do -%>
+            <li class="category">
+                <%= link_to h(category.name), category %>
+            </li>
+        <% end -%>
+    </ul>
+</p>
+
+
+<%= link_to 'Edit', edit_macro_category_path(@macro_category) %> |
+<%= link_to 'Back', macro_categories_path %>
+</div>

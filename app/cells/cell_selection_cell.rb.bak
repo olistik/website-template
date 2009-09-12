@@ -1,0 +1,113 @@
+class CellSelectionCell < Apotomo::StatefulWidget
+=begin
+- interaction layer
+
+* TODO learn how to do plugins -.-'
+
+* TODO/DISCUSS get from YAML
+    where?
+        /app/cells/my_cell_name.yml
+        /app/cells/my_cell_name/composition_rules.yml
+
+* TODO add :component parameter inside the children and render a complete
+component as a child.
+
+* widget_tree structure allows infinte depth levels:
+    :widget_tree => [{
+        :method => :method_0,
+        :id => "id_for_method_0"
+        :children => [{
+            :method => :method_0_0,
+            :id => "id_for_method_0_0"
+        }, {
+            :method => :method_0_1,
+            :id => "id_for_method_0_1"
+        }]}, {
+        :method => :method_1
+        :id => "id_for_method_1"
+    }]
+that will map this tree structure:
+    method_0
+        method_0_0
+        method_0_1
+    method_1
+
+* every component will have a root_container that will
+make passed params accessible to its children.
+=end
+
+#    CompositionRules = {
+#        :options => [:is_new, :current_cell],
+#        :root_container_id => 'cell_selection',
+#        :widget_tree => [{
+#            :method => :init_actions,
+#            :id => "cell_actions"
+#            }, {
+#            :method => :init_containers,
+#            :id => "cell_containers"
+#        }], :event_handlers => [{
+#            :event => :selection,
+#            :target_cell_id => "cell_actions",
+#            :invoked_state => :update_actions
+#        }
+#        ]
+#    }
+
+    # code shared among apotomo components
+    # TODO pack these into external functions
+#    CompositionRules[:options].each do |option|
+#        attr_accessor option.to_sym
+#    end
+
+    attr_accessor :is_new
+
+    def root_container
+        yield self
+        set_local_param :new_object, @opts[:is_new]
+        debugger
+#        CompositionRules[:options].each do |option|
+#            if @opts.has_key? option.to_sym
+#                set_local_param option.to_sym, @opts[option.to_sym]
+#            end
+#        end
+    end
+
+    # custom widget definition
+
+    transition :from => :display_actions, :to => :update_actions
+
+    def init_actions
+        if param(:new_object)
+            @cell_actions = []
+            @current_cell_action = nil
+        else
+            @cell_actions = CellRegistry.actions_by_cell(param(:current_cell).cell_container.name)
+            @current_cell_action = param(:current_cell)
+        end
+        jump_to_state :display_actions
+    end
+
+    def init_containers
+        @cell_containers = CellContainer.all_for_select
+        if param(:new_object)
+            @current_cell_container = nil
+        else
+            @current_cell_container = param(:current_cell).cell_container
+        end
+        jump_to_state :display_containers
+    end
+
+    def display_actions
+        render
+    end
+
+    def display_containers
+        render
+    end
+
+    def update_actions
+        cell_container = CellContainer.find(param(:cell_container_id))
+        @cell_actions = CellRegistry.actions_by_cell(cell_container.name)
+        jump_to_state :display_actions
+    end
+end

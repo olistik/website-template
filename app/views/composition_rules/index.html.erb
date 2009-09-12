@@ -1,0 +1,5 @@
+<%= link_to 'new rule', new_object_path %><br />
+<% for path_data in @paths do -%>
+    <%= render_cell :slug, :draw_path_for_index, :path_data => path_data %>
+<% end -%>
+

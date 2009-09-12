@@ -1,0 +1,2 @@
+module AdvertisementNotesHelper
+end

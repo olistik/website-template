@@ -1,0 +1,105 @@
+<div class="crud_form">
+<% content_for :js_libraries do -%>
+    <%= javascript_include_tag 'nested_objects_form' %>
+<% end -%>
+
+<h1>Modifica <i>Inserzione</i></h1>
+
+<% form_for(@advertisement) do |advertisement_form| %>
+    <% content_for :js_templates do -%>
+        <%= generate_template_var(advertisement_form, :notes) %>
+    <% end -%>
+    <%= advertisement_form.error_messages %>
+
+    <div id="notes">
+        <% advertisement_form.fields_for :notes do |note_form| %>
+            <%= render :partial => 'note', :locals => {:f => note_form} %>
+        <% end %>
+    </div>
+    <div id="new_notes">
+    </div>
+    <%= link_to 'Aggiungi una nota', '#note', :class => "add nested_object", :rel => "new_notes" %>
+
+    <div id="advertisement_level">
+        <%= advertisement_form.label :advertisement_level_id, "Livello" %>
+        <%= advertisement_form.select :advertisement_level_id, @advertisement_levels -%>
+    </div>    
+
+    <ul id="services">
+        <b>Servizi:</b>
+        <% for service in @services do -%>
+            <li>
+                <%= check_box_tag "advertisement[service_ids][]", service.id, @advertisement.services.include?(service) %>
+                <%= link_to h(service.name), service %>
+            </li>
+        <% end -%>
+    </ul>
+
+    <ul id="collections">
+        <b>Collezioni:</b>
+        <% for collection in @collections do -%>
+            <li>
+                <%= check_box_tag "advertisement[collection_ids][]", collection.id, @advertisement.collections.include?(collection) %>
+                <%= link_to h(collection.name), collection %>
+            </li>
+        <% end -%>
+    </ul>
+
+    <ul id="categories">
+        <b>Categorie:</b>
+        <% for category in @categories do -%>
+            <li>
+                <%= check_box_tag "advertisement[category_ids][]", category.id, @advertisement.categories.include?(category) %>
+                <%= link_to h(category.name), category %>
+            </li>
+        <% end -%>
+    </ul>
+
+    <p>
+        <%= advertisement_form.label :customer_id, "Fornitore" %><br />
+        <%= advertisement_form.select :customer_id, @customers %>
+    </p>
+    <p>
+        <%= advertisement_form.label :name, "Nome" %><br />
+        <%= advertisement_form.text_field :name %>
+    </p>
+
+    <%= render :partial => 'shared/geo_selects', :locals => {
+        :form_builder => advertisement_form,
+        :nations => @nations,
+        :regions => @regions,
+        :provinces => @provinces,
+        :cities => @cities
+    } %>
+
+    <p>
+        <%= advertisement_form.label :address, "Indirizzo" %><br />
+        <%= advertisement_form.text_field :address %>
+    </p>
+    <p>
+        <%= advertisement_form.label :civic_number, "Numero civico" %><br />
+        <%= advertisement_form.text_field :civic_number %>
+    </p>
+    <p>
+        <%= advertisement_form.label :start_date, "Data inizio" %><br />
+        <%= advertisement_form.date_select :start_date %>
+    </p>
+    <p>
+        <%= advertisement_form.label :end_date, "Data fine" %><br />
+        <%= advertisement_form.date_select :end_date %>
+    </p>
+    <p>
+        <%= advertisement_form.label :contact_id, "Contatto" %><br />
+        <%= advertisement_form.select :contact_id, [''] + @contacts %>
+    </p>
+    <p>
+        <%= advertisement_form.label :description, "Descrizione" %><br />
+        <%= advertisement_form.text_area :description %>
+    </p>
+    <p>
+        <%= advertisement_form.submit 'Aggiorna' %>
+    </p>
+<% end %>
+
+<%= link_to 'Lista <i>Inserzioni</i>', advertisements_path %>
+</div>

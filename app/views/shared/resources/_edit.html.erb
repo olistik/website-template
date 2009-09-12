@@ -1,0 +1,12 @@
+<div class="crud_form">
+<%= link_to 'Lista', collection_path %>
+<h1><%= title %></h1>
+
+<% form_for(object) do |form| %>
+    <%= form.error_messages %>
+    <%= render :partial => 'form', :object => form %>
+    <%= form.submit "Aggiorna" %>
+<% end %>
+
+<%= link_to 'Lista', collection_path %>
+</div>

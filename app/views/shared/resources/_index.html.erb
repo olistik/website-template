@@ -1,0 +1,40 @@
+<div class="crud_form">
+<h1><%= title %></h1>
+
+<%= link_to 'Nuovo', new_object_path %>
+<table border="1">
+    <tr>
+        <% for field in fields do %>
+            <th><%= field[:label] %></th>
+        <% end -%>
+        <% @extra_colspan = defined?(extra_actions) ? extra_actions.size : 0 -%>
+        <th colspan="<%= 3 + @extra_colspan %>">Azioni</th>
+    </tr>
+
+<% collection.each do |object| %>
+    <tr>
+        <% for field in fields do -%>
+            <td><%= object.value_for(field[:name]) %></td>
+        <% end -%>
+        <td><%= link_to 'Mostra', object %></td>
+        <td><%= link_to 'Modifica', edit_object_path(object) %></td>
+        <td><%= link_to 'Cancella', object, :confirm => 'Sicuro?', :method => :delete %></td>
+        <% if defined? extra_actions -%>
+            <% for extra_action in extra_actions do -%>
+                <td>
+                    <%= link_to extra_action[:label], url_for(
+                        :controller => object.class.to_s.tableize,
+                        :action => extra_action[:action],
+                        :id => object.id
+                    ), extra_action[:method].nil? ? nil : :method => extra_action[:method] %>
+                </td>
+            <% end -%>
+        <% end -%>
+    </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuovo', new_object_path %>
+</div>

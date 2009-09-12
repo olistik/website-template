@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag 'menu/csshorizontalmenu' %>
+<%= javascript_include_tag 'menu/csshorizontalmenu' %>
+<div class="horizontalcssmenu">
+    <ul>
+        <li><%= link_to "Gestione Menù", menu_entries_path() %></li>
+        <% for menu_entry in MenuEntry.main_entries do -%>
+            <%= print_recursive_menu(menu_entry) %>
+        <% end -%>
+    </ul>
+    <br style="clear: left;" />
+</div>
+

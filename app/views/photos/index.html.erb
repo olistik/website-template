@@ -1,0 +1,34 @@
+<div class="crud_form">
+<h1>Listing photos</h1>
+
+<%= link_to 'New photo', new_photo_path %>
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Rating</th>
+    <th>Viewed</th>
+    <th>Customer</th>
+    <th># Inserzioni</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @photos.each do |photo| %>
+  <tr>
+    <td><%=h photo.name %></td>
+    <td><%= link_to image_tag(photo.image.url(:thumb)), photo.image.url %></td>
+    <td><%=h photo.rating %></td>
+    <td><%=h photo.viewed %></td>
+    <td><%= photo.customer.nil? ? "N/D" : link_to(h(photo.customer.name), photo.customer) %></td>
+    <td><%= photo.advertisements.size %></td>
+    <td><%= link_to 'Show', photo %></td>
+    <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
+    <td><%= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New photo', new_photo_path %>
+</div>

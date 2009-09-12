@@ -1,0 +1,7 @@
+<%= javascript_include_tag :defaults %>
+<%= yield :js_libraries -%>
+<% javascript_tag do -%>
+    <%= "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+    <%= yield :js_templates %>
+<% end -%>
+

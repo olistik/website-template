@@ -1,0 +1,28 @@
+<div class="crud_form">
+<h1>Listing pubblications</h1>
+
+<%= link_to 'New pubblication', new_pubblication_path %>
+<table border="1">
+  <tr>
+    <th>advertisement</th>
+    <th>Photo</th>
+    <th>Promote</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @pubblications.each do |pubblication| %>
+  <tr>
+    <td><%= link_to h(pubblication.advertisement.name), pubblication.advertisement %></td>
+    <td><%= link_to h(pubblication.photo.name), pubblication.photo %></td>
+    <td><%=h pubblication.promote %></td>
+    <td><%= link_to 'Show', pubblication %></td>
+    <td><%= link_to 'Edit', edit_pubblication_path(pubblication) %></td>
+    <td><%= link_to 'Destroy', pubblication, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New pubblication', new_pubblication_path %>
+</div>

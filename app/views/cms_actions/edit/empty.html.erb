@@ -1,0 +1,16 @@
+<div class="crud_form">
+<h1>Editing cms_action</h1>
+
+<% form_for(@cms_action) do |f| %>
+    <p>
+        <%= f.label :cms_controller_id %><br />
+        <%= f.select :cms_controller_id, CmsController.all_for_select %>
+        <%= hidden_field_tag :direction, :next %>
+    </p>
+    <p>
+        <%= submit_tag 'Next' %>
+    </p>
+<% end %>
+
+<%= link_to 'Back', cms_actions_path %>
+</div>

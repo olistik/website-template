@@ -1,0 +1,25 @@
+<div class="crud_form">
+<h1>Editing macro_category</h1>
+
+<% form_for(@macro_category) do |f| %>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+    </p>
+    <ul class="categories">
+        <% for category in @categories %>
+            <li class="category">
+                <%= check_box_tag "macro_category[category_ids][]", category.id, @macro_category.categories.include?(category) %>
+                <%= link_to(h(category.name), category) %>
+            </li>
+        <% end %>
+    </ul>
+    <p>
+        <%= f.submit 'Update' %>
+    </p>
+<% end %>
+
+<%= link_to 'Show', @macro_category %> |
+<%= link_to 'Back', macro_categories_path %>
+</div>

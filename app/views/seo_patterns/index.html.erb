@@ -1,0 +1,15 @@
+<%= render :partial => 'shared/resources/index', :locals => {
+    :title => 'Pattern SEO',
+    :fields => [
+        {:name => 'table_name', :label => "Nome Tabella"},
+        {:name => 'name', :label => "Nome"},
+        {:name => 'cell_layout', :label => "Layout di Cella"},
+        {:name => 'title', :label => "Titolo"},
+        {:name => 'keywords', :label => "Keywords"},
+        {:name => 'description', :label => "Description"},
+        {:name => 'tags', :label => "Tags"},
+        {:name => 'url', :label => "url"},
+        {:name => 'slugs_size', :label => "# Slugs"}
+    ], :collection => collection
+} %>
+

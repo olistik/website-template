@@ -1,0 +1,25 @@
+<div class="crud_form">
+<p>
+  <b>Slug:</b>
+  <%=h @slug_navigator.slug_id %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @slug_navigator.parent_id %>
+</p>
+
+<p>
+  <b>Alt:</b>
+  <%=h @slug_navigator.alt %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @slug_navigator.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_slug_navigator_path(@slug_navigator) %> |
+<%= link_to 'Back', slug_navigators_path %>
+</div>

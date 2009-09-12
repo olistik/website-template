@@ -1,0 +1,26 @@
+<!--
+render :partial => 'shared/resources/habtm_form', :locals => {
+    :label => 'title for the checkbox list',
+    :object => object, # the object to update
+    :collection => @cell_layouts, # all the available objects for the relation
+    :collection_class => CellLayout, # class of the objects relation
+    :collection_label_field => :name # method to invoke when printing the meaningful link
+}
+-->
+
+<% object_name = object.class.to_s.tableize.singularize -%>
+<% relation_type = collection_class.to_s.tableize -%>
+<% object_collection = object.send(relation_type) -%>
+<% form_id_selector = "#{object_name}[#{relation_type.singularize}_ids][]" -%>
+<ul id="<%= relation_type %>">
+    <b><%= label %>:</b>
+    <% for element in collection do -%>
+        <li class="<%= relation_type.singularize %>">
+            <% check_flag = object_collection.include?(element) -%>
+            <%= check_box_tag form_id_selector, element.id, check_flag %>
+            <% element_label = h(element.send(collection_label_field.to_s)) -%>
+            <%= link_to element_label, element  %>
+        </li>
+    <% end -%>
+</ul>
+

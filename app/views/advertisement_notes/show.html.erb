@@ -1,0 +1,15 @@
+<div class="crud_form">
+<p>
+  <b>Nota:</b>
+  <%=h @advertisement_note.content %>
+</p>
+
+<p>
+  <b>Inserzione:</b>
+  <%=link_to(h(@advertisement_note.advertisement.name), @advertisement_note.advertisement) %>
+</p>
+
+
+<%= link_to 'Modifica', edit_advertisement_note_path(@advertisement_note) %> |
+<%= link_to 'Lista <i>Inserzioni</i>', advertisement_notes_path %>
+</div>

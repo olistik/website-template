@@ -1,0 +1,15 @@
+<div class="crud_form">
+<table class="users index">
+    <thead>
+        <tr>
+            <th colspan="3">Actions</th>
+            <th>Id</th>
+            <th>Login</th>
+            <th>E-mail</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= render :partial => 'user_info', :collection => @users %>
+    </tbody>
+</table>
+</div>

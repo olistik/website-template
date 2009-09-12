@@ -1,0 +1,29 @@
+<%= form.label :table_name, 'Nome Tabella' %><br />
+<%= form.select :table_name, @table_names, :include_blank => true %><br />
+<%= render_cell :form, :observe_select, {
+    :source => "#seo_pattern_table_name",
+    :url => seo_table_attributes_path,
+    :param_name => :table_name,
+    :update => "#response_div"
+} %>
+<div id="response_div">
+    <% unless form.object.new_record? -%>
+        <%= render_cell :seo_pattern, :table_attributes, :table_name => form.object.table_name %>
+    <% end -%>
+</div>
+<%= form.label :name, 'Nome' %><br />
+<%= form.text_field :name %><br />
+<%= form.label :cell_layout_id %><br />
+<%= form.select :cell_layout_id, @cell_layouts %><br />
+<%= form.label :url, 'Url' %><br />
+<%= form.text_field :url %><br />
+<%= form.label :title, 'Titolo' %><br />
+<%= form.text_field :title %><br />
+<%= form.label :keywords, 'Keywords' %><br />
+<%= form.text_field :keywords %><br />
+<%= form.label :description, 'Description' %><br />
+<%= form.text_area :description %><br />
+<%= form.label :tags, 'Tags' %><br />
+<%= form.text_area :tags %><br />
+
+

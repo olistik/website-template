@@ -1,0 +1,19 @@
+<ul class="path">
+    CELL LAYOUT: <b><%= @cell_layout.name %></b>
+    <input type="hidden" name="cell_layout_id" value="<%= @cell_layout.id.to_s %>" />
+    <li>
+        <%= radio_button_tag "composition_rule[previous_id]", "",
+            @cell_layout == @composition_rule.cell_layout &&
+            @composition_rule.previous_id.nil? &&
+            !@composition_rule.new_record?%>
+        START
+    </li>
+    <% for composition_rule in @path do -%>
+        <li>
+            <%= radio_button_tag "composition_rule[previous_id]",
+                "#{composition_rule.id}",
+                @composition_rule.id == composition_rule.id %>
+            <%= link_to composition_rule.cell_action, composition_rule %>
+        </li>
+    <% end -%>
+</ul>

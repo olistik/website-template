@@ -1,0 +1,44 @@
+<div class="crud_form">
+<h1>Lista <i>Inserzioni</i></h1>
+
+<%= link_to 'Nuova <i>Inserzione</i>', new_advertisement_path %>
+<table border="1">
+  <tr>
+    <th>Fornitore</th>
+    <th>Nome</th>
+    <th>Città</th>
+    <th>Data Inizio</th>
+    <th>Data Fine</th>
+    <th>Contatto</th>
+    <th>Livello</th>
+    <th># Note</th>
+    <th># Servizi</th>
+    <th># Collezioni</th>
+    <th># Categorie</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @advertisements.each do |advertisement| %>
+  <tr>
+    <td><%= h advertisement.customer.nil? ? "N/D" : advertisement.customer.name %></td>
+    <td><%= h advertisement.name %></td>
+    <td><%= h advertisement.city.nil? ? "N/D" : advertisement.city.name %></td>
+    <td><%= h advertisement.start_date %></td>
+    <td><%= h advertisement.end_date %></td>
+    <td><%= h advertisement.contact.nil? ? "N/D" : advertisement.contact.name %></td>
+    <td><%= h (advertisement.advertisement_level.nil? ? "N/D" : advertisement.advertisement_level.name) %></td>
+    <td><%= h advertisement.notes.size %></td>
+    <td><%= h advertisement.services.size %></td>
+    <td><%= h advertisement.collections.size %></td>
+    <td><%= h advertisement.categories.size %></td>
+    <td><%= link_to 'Mostra', advertisement %></td>
+    <td><%= link_to 'Modifica', edit_advertisement_path(advertisement) %></td>
+    <td><%= link_to 'Cancella', advertisement, :confirm => 'Sei sicuro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuova <i>Inserzione</i>', new_advertisement_path %>
+</div>

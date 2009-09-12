@@ -1,0 +1,19 @@
+<div class="crud_form">
+<p>
+  <b>Inserzione:</b>
+  <%= link_to h(@pubblication.advertisement.name), @pubblication.advertisement %>
+</p>
+
+<p>
+  <b>Foto:</b>
+  <%= link_to h(@pubblication.photo.name), @pubblication.photo %>
+</p>
+
+<p>
+  <b>Promozione:</b>
+  <%= @pubblication.promote ? "SI" : "NO" %>
+</p>
+
+<%= link_to 'Edit', edit_pubblication_path(@pubblication) %> |
+<%= link_to 'Back', pubblications_path %>
+</div>

@@ -1,0 +1,20 @@
+<div class="crud_form">
+<p>
+  <b>Contact:</b>
+  <%= link_to h(@contact_detail.contact.name), @contact_detail.contact %>
+</p>
+
+<p>
+  <b>Contact type:</b>
+  <%= link_to h(@contact_detail.contact_type.name), @contact_detail.contact_type %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @contact_detail.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_detail_path(@contact_detail) %> |
+<%= link_to 'Back', contact_details_path %>
+</div>

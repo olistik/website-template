@@ -1,0 +1,8 @@
+<%= render :partial => 'shared/resources/index', :locals => {
+    :title => 'Layout di Celle',
+    :fields => [
+        {:name => 'name', :label => "Nome"},
+        {:name => 'seo_patterns_size', :label => "# Seo patterns"}
+    ], :collection => collection
+} %>
+

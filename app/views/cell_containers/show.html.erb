@@ -1,0 +1,9 @@
+<%= render :partial => 'shared/resources/show', :locals => {
+    :title => 'Contenitore di Celle',
+    :fields => [
+        {:name => 'name', :label => "Nome"},
+        {:name => 'label', :label => "Etichetta"},
+        {:name => 'cell_actions', :label => "Azioni di Cella"}
+    ], :object => object
+} %>
+

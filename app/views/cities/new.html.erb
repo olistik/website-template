@@ -1,0 +1,25 @@
+<div class="crud_form">
+<h1>New city</h1>
+
+<% form_for(@city) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :cap %><br />
+    <%= f.text_field :cap %>
+  </p>
+  <p>
+    <%= f.label :province_id %><br />
+    <%= f.select :province_id, @provinces %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', cities_path %>
+</div>

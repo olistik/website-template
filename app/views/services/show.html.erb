@@ -1,0 +1,27 @@
+<div class="crud_form">
+<p>
+    <b>Nome:</b>
+    <%=h @service.name %>
+</p>
+
+<ul id="categories">
+    <h4>Categorie associate:</h4>
+    <% for category in @service.categories do -%>
+        <li class="category">
+            <%= link_to h(category.name), category %>
+        </li>
+    <% end -%>
+</ul>
+
+<ul id="advertisements">
+    <h4>Inserzioni associate:</h4>
+    <% for advertisement in @service.advertisements do -%>
+        <li class="advertisement">
+            <%= link_to h(advertisement.name), advertisement %>
+        </li>
+    <% end -%>
+</ul>
+
+<%= link_to 'Modifica', edit_service_path(@service) %> |
+<%= link_to 'Lista <i>Servizi</i>', services_path %>
+</div>

@@ -1,0 +1,13 @@
+<ul class="path">
+    CELL LAYOUT: <b><%= @cell_layout.name %></b>
+    <% for composition_rule in @path do -%>
+        <li>
+            <b>(<%= composition_rule.to_s %>)</b>
+            [
+                <%= link_to 'E', edit_composition_rule_path(composition_rule) %> |
+                <%= link_to 'X', composition_rule, :confirm => 'Are you sure?', :method => :delete %>
+            ]
+            <%= link_to composition_rule.cell_action, composition_rule %>
+        </li>
+    <% end -%>
+</ul>

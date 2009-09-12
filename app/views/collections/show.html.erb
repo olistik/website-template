@@ -1,0 +1,29 @@
+<div class="crud_form">
+<p>
+  <b>Nome:</b>
+  <%=h @collection.name %>
+</p>
+
+<p>
+  <b>Descrizione:</b>
+  <%=h @collection.description %>
+</p>
+
+<ul id="advertisements">
+    <b>Inserzioni:</b>
+    <% for advertisement in @collection.advertisements do -%>
+        <li class="advertisement">
+            <%= link_to h(advertisement.name), advertisement -%>
+        </li>
+    <% end -%>
+</ul>
+
+<p>
+  <b>Categoria:</b>
+  <%= link_to h(@collection.category.name), @collection.category %>
+</p>
+
+
+<%= link_to 'Edit', edit_collection_path(@collection) %> |
+<%= link_to 'Back', collections_path %>
+</div>

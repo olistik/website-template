@@ -1,0 +1,9 @@
+<%= render :partial => 'shared/resources/show', :locals => {
+    :title => 'Regola di Composizione',
+    :fields => [
+        {:name => 'previous', :label => "Precedente"},
+        {:name => 'cell_layout', :label => "Layout di Cella"},
+        {:name => 'cell_action', :label => "Azione di Cella"}
+    ], :object => object
+} %>
+

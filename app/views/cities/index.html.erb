@@ -1,0 +1,32 @@
+<div class="crud_form">
+<h1>Listing cities</h1>
+
+<%= link_to 'New city', new_city_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Cap</th>
+    <th>Province</th>
+    <th># Inserzioni</th>
+    <th># Fornitori</th>
+    <th colspan="3">Azioni</th>
+  </tr>
+
+<% @cities.each do |city| %>
+  <tr>
+    <td><%=h city.name %></td>
+    <td><%=h city.cap %></td>
+    <td><%=h city.province_id %></td>
+    <td><%= city.advertisements.size %></td>
+    <td><%= city.customers.size %></td>
+    <td><%= link_to 'Show', city %></td>
+    <td><%= link_to 'Edit', edit_city_path(city) %></td>
+    <td><%= link_to 'Destroy', city, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New city', new_city_path %>
+</div>

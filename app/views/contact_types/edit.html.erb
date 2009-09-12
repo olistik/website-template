@@ -1,0 +1,18 @@
+<div class="crud_form">
+<h1>Editing contact_type</h1>
+
+<% form_for(@contact_type) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @contact_type %> |
+<%= link_to 'Back', contact_types_path %>
+</div>

@@ -1,0 +1,20 @@
+<div class="crud_form">
+<p>
+  <b>Name:</b>
+  <%=h @cms_action.name %>
+</p>
+
+<p>
+  <b>Label:</b>
+  <%=h @cms_action.label %>
+</p>
+
+<p>
+  <b>Cms controller:</b>
+  <%= link_to @cms_action.cms_controller.name, cms_controller_path(@cms_action.cms_controller) %>
+</p>
+
+
+<%= link_to 'Edit', edit_cms_action_path(@cms_action) %> |
+<%= link_to 'Back', cms_actions_path %>
+</div>

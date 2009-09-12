@@ -1,0 +1,33 @@
+<div class="crud_form">
+<h1>New photo</h1>
+
+<% form_for(@photo, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+      <%= f.label :image %><br />
+      <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.label :customer_id, 'Fornitore' %><br />
+    <%= f.select :customer_id, @customers %>
+  </p>
+<ul id="advertisements">
+    <b>Inserzioni:</b>
+    <% for advertisement in @advertisements do -%>
+        <li class="advertisement">
+            <%= check_box_tag 'photo[advertisement_ids][]', advertisement.id %>
+            <%= link_to h(advertisement.name), advertisement  %>
+        </li>
+    <% end -%>
+</ul>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', photos_path %>
+</div>

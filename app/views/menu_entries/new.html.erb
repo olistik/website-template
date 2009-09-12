@@ -1,0 +1,25 @@
+<div class="crud_form">
+<h1>New menu_entry</h1>
+
+<% form_for(@menu_entry) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :parent_id %><br />
+    <%= f.select :parent_id, @menu_entries, :include_blank => true %>
+  </p>
+  <p>
+    <%= f.label :cms_action_id %><br />
+    <%= f.select :cms_action_id, @cms_actions, :include_blank => true %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', menu_entries_path %>
+</div>

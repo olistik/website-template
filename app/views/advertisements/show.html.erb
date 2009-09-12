@@ -1,0 +1,95 @@
+<div class="crud_form">
+<p>
+  <b>Fornitore:</b>
+    <% if @advertisement.customer.nil? -%>
+        N/D
+    <% else -%>
+        <%=h @advertisement.customer.name + " - " + @advertisement.customer.company_name %>
+    <% end -%>
+</p>
+
+<p>
+  <b>Nome inserzione:</b>
+  <%=h @advertisement.name %>
+</p>
+
+</p>
+<p>
+  <b>Città:</b>
+    <% if @advertisement.city.nil? -%>
+        N/D
+    <% else -%>
+        <%=h @advertisement.city.name + ", " + @advertisement.city.province.name + " - " + @advertisement.city.province.region.nation.name %>
+    <% end -%>
+</p>
+
+<p>
+  <b>Indirizzo:</b>
+  <%=h @advertisement.address %>
+</p>
+
+<p>
+  <b>Numero civico:</b>
+  <%=h @advertisement.civic_number %>
+</p>
+
+<p>
+  <b>Data inizio:</b>
+  <%=h @advertisement.start_date %>
+</p>
+
+<p>
+  <b>Data fine:</b>
+  <%=h @advertisement.end_date %>
+</p>
+
+<p>
+  <b>Contatto:</b>
+    <% if @advertisement.contact.nil? -%>
+        N/D
+    <% else -%>
+        <%=h @advertisement.contact.name + " - " + @advertisement.contact.type.name %>
+    <% end -%>
+</p>
+
+<p>
+  <b>Descrizione:</b>
+  <%=h @advertisement.description %>
+</p>
+
+<p>
+    <b>Note:</b>
+    <% for note in @advertisement.notes do -%>
+        <p><%= h note.content %></p>
+    <% end -%>
+</p>
+
+<p>
+  <b>Livello:</b>
+  <%= @advertisement.advertisement_level == nil ? "N/D" : h(@advertisement.advertisement_level.name)  %>
+</p>
+
+<ul id="services">
+<b>Servizi:</b>
+    <% for service in @advertisement.services do -%>
+        <li class="service"><%= link_to h(service.name), service %></li>
+    <% end -%>
+</ul>
+
+<ul id="collections">
+    <b>Collezioni:</b>
+    <% for collection in @advertisement.collections do -%>
+        <li class="collection"><%= link_to h(collection.name), collection %></li>
+    <% end -%>
+</ul>
+
+<ul id="categories">
+    <b>Categorie:</b>
+    <% for category in @advertisement.categories do -%>
+        <li class="category"><%= link_to h(category.name), category %></li>
+    <% end -%>
+</ul>
+
+<%= link_to 'Modifica', edit_advertisement_path(@advertisement) %> |
+<%= link_to 'Lista <i>Inserzioni</i>', advertisements_path %>
+</div>

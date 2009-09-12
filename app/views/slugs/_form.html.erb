@@ -1,0 +1,80 @@
+<% content_for :js_libraries do -%>
+    <%= javascript_include_tag 'slugs/params' %>
+<% end -%>
+<% content_for :js_templates do %>
+    <%= generate_js_vars() %>
+<% end -%>
+
+<%= form.error_messages %>
+<p>
+    <%= form.label :url %><br />
+    <%= form.text_field :url %>
+</p>
+
+<p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+</p>
+<p>
+    <%= form.label :keywords %>
+    <%= form.text_field :keywords %>
+</p>
+<p>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+</p>
+<p>
+    <%= form.label :tags %>
+    <%= form.text_area :tags %>
+</p>
+
+<p>
+    <%= form.label :seo_object_type %>
+    <%= form.select :seo_object_type, @seo_object_types, :include_blank => true %>
+</p>
+<%= render_cell :form, :observe_select, {
+    :source => "#slug_seo_object_type",
+    :url => seo_objects_by_type_path,
+    :param_name => :seo_object_type,
+    :update => "#response_div"
+} %>
+<div id="response_div">
+    <% if !form.object.new_record? && !form.object.seo_object_type.nil? -%>
+        <% options = {
+            :seo_object_type => form.object.seo_object_type,
+            :seo_object_id => form.object.seo_object_id
+        } -%>
+        <%= render_cell(:slug, :seo_objects_by_type, options) %>
+    <% end -%>
+</div>
+
+<p>
+    <%= form.label :seo_pattern_id %>
+    <%= form.select :seo_pattern_id, @seo_patterns %>
+</p>
+<%= link_to 'new seo pattern', new_seo_pattern_path %><br />
+
+<%= link_to 'Aggiungi', 'javascript:void(0)', :class => 'add slug_parameter' %>
+<table class="slug_data">
+    <caption>Parametri</caption>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Valore</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for couple in @slug.param_data do -%>
+            <% rand_id = (rand*10**10).to_i -%>
+            <tr>
+                <td><%= text_field_tag "slug[param_data][#{rand_id}][name]", couple[:name] %></td>
+                <td><%= text_field_tag "slug[param_data][#{rand_id}][value]", couple[:value] %></td>
+                <td><%= generate_remove_link() %></td>
+            </tr>
+        <% end -%>
+    </tbody>
+</table>
+</p>
+    <%= form.submit 'Update' %>
+</p>
+

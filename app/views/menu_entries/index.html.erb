@@ -1,0 +1,42 @@
+<div class="crud_form">
+<h1>Listing menu_entries</h1>
+
+<%= link_to 'Nuova voce del menù', new_menu_entry_path %><br />
+<%= link_to 'Aggiungi un\'<i>Azione</i>', cms_actions_path %>
+<table border="1">
+    <tr>
+        <th>Parent</th>
+        <th>Name</th>
+        <th>Controller</th>
+        <th>Action</th>
+        <th>Menu link</th>
+        <th colspan="3">Azioni</th>
+    </tr>
+
+    <% for menu_entry in @menu_entries %>
+    <tr>
+        <td><%=h menu_entry.parent_id.nil? ? "nil" : menu_entry.parent.name %></td>
+        <td><%=h menu_entry.name %></td>
+        <% if menu_entry.cms_action == nil -%>
+            <% cms_controller_name = "" -%>
+            <% cms_action_name = "" -%>
+        <% else -%>
+            <% cms_controller_name = menu_entry.cms_action.cms_controller.name -%>
+            <% cms_action_name = menu_entry.cms_action.name -%>            
+        <% end -%>
+        <td><%=h cms_controller_name %></td>
+        <td><%=h cms_action_name %></td>
+        <td><%= menu_link(menu_entry) %></td>
+        <td><%= link_to 'Show', menu_entry %></td>
+        <td><%= link_to 'Edit', edit_menu_entry_path(menu_entry) %></td>
+        <td><%= link_to 'Destroy', menu_entry, :confirm => 'Sei sicuro? Cancellerai anche tutti i sotto menu associati!', :method => :delete %></td>
+    </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuova voce del menù', new_menu_entry_path %><br />
+<%= link_to 'Aggiungi un\'<i>Azione</i>', cms_actions_path %>
+
+</div>

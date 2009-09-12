@@ -1,0 +1,37 @@
+<div class="crud_form">
+<p>
+  <b>Name:</b>
+  <%=h @city.name %>
+</p>
+
+<p>
+  <b>Cap:</b>
+  <%=h @city.cap %>
+</p>
+
+<p>
+  <b>Province:</b>
+  <%= link_to h(@city.province.name), @city.province %>
+</p>
+
+<ul id="advertisements">
+    <b>Inserzioni:</b>
+    <% for advertisement in @city.advertisements do -%>
+        <li class="advertisement">
+            <%= link_to h(advertisement.name), advertisement %>
+        </li>
+    <% end -%>
+</ul>
+
+<ul id="customers">
+    <b>Fornitori:</b>
+    <% for customer in @city.customers do -%>
+        <li class="customer">
+            <%= link_to h(customer.name), customer %>
+        </li>
+    <% end -%>
+</ul>
+
+<%= link_to 'Edit', edit_city_path(@city) %> |
+<%= link_to 'Back', cities_path %>
+</div>

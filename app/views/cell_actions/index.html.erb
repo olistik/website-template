@@ -1,0 +1,10 @@
+<%= render :partial => 'shared/resources/index', :locals => {
+    :title => 'Azioni di Celle',
+    :fields => [
+        {:name => 'name', :label => "Nome"},
+        {:name => 'label', :label => "Etichetta"},
+        {:name => 'cell_container', :label => "Contenitore di Cella"},
+        {:name => 'cell_layouts_size', :label => "# Layouts di Celle"}
+    ], :collection => collection
+} %>
+

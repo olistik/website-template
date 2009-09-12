@@ -1,0 +1,7 @@
+<ul class="seo table attributes">
+    <b>Available attributes:</b>
+    <% for table_attribute in @table_attributes  -%>
+        <li><%= SeoPattern.attribute_pattern_format(table_attribute) %></li>
+    <% end -%>
+</ul>
+
